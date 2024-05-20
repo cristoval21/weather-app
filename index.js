@@ -32,9 +32,16 @@ class Weather {
       icon: currentData.condition.icon,
       condition: currentData.condition.text,
       date: currentData.last_updated,
+      wind: currentData.wind_kph,
+      humidity: currentData.humidity,
+      feels_like: currentData.feelslike_c,
     };
   }
 }
+
+// Init weather UI
+const weather = new Weather('Jakarta');
+fillWeatherUI(weather);
 
 const $searchForm = document.getElementById('search-form');
 $searchForm.addEventListener('submit', handleSearch);
@@ -43,23 +50,29 @@ function handleSearch(e) {
   const $searchForm = document.getElementById('search-form');
   const $searchInput = document.getElementById('search-input');
 
+  if ($searchForm.checkValidity()) {
+    e.preventDefault();
+
+    const weather = new Weather($searchInput.value);
+    fillWeatherUI(weather);
+  }
+}
+
+function fillWeatherUI(weather) {
+  const $searchInput = document.getElementById('search-input');
   const $currentDate = document.getElementById('current-date');
   const $currentIcon = document.getElementById('current-icon');
   const $currentTemperature = document.getElementById('current-temperature');
   const $currentCondition = document.getElementById('current-condition');
 
-  if ($searchForm.checkValidity()) {
-    e.preventDefault();
+  weather.getLocation().then((city) => {
+    $searchInput.value = `${city.name}, ${city.country}`;
+  });
 
-    const weather = new Weather($searchInput.value);
-    weather.getLocation().then((city) => {
-      $searchInput.value = `${city.name}, ${city.country}`;
-    });
-    weather.getCurrentWeather().then((current) => {
-      $currentDate.textContent = current.date;
-      $currentIcon.src = current.icon;
-      $currentTemperature.textContent = current.temperature;
-      $currentCondition.textContent = current.condition;
-    });
-  }
+  weather.getCurrentWeather().then((current) => {
+    $currentDate.textContent = current.date;
+    $currentIcon.src = current.icon;
+    $currentTemperature.textContent = current.temperature;
+    $currentCondition.textContent = current.condition;
+  });
 }

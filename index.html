@@ -11,6 +11,9 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
       rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
   </head>
   <body>
     <div class="search-container">
@@ -26,19 +29,38 @@
       </form>
     </div>
 
-    <div class="weather-card">
-      <div class="weather-card__container">
-        <div class="weather-card__date" id="current-date"></div>
-        <div class="weather-card__condition-container">
-          <div class="weather-card__temperature-container">
-            <img
-              src=""
-              alt="Weather icon"
-              class="weather-card__icon"
-              id="current-icon" />
-            <h1 class="weather-card__temperature" id="current-temperature"></h1>
+    <div class="cards-container">
+      <div class="current-card card">
+        <div class="current-card__container">
+          <div class="current-card__date" id="current-date"></div>
+          <div class="current-card__condition-container">
+            <div class="current-card__temperature-container">
+              <img
+                src=""
+                alt="Weather icon"
+                class="current-card__icon"
+                id="current-icon" />
+              <h1
+                class="current-card__temperature"
+                id="current-temperature"></h1>
+            </div>
+            <div class="current-card__condition" id="current-condition"></div>
           </div>
-          <div class="weather-card__condition" id="current-condition"></div>
+        </div>
+      </div>
+
+      <div class="miscellaneous-container card">
+        <div class="miscellaneous__item-container">
+          <div class="miscellaneous__item-heading las la-wind"></div>
+          <div class="miscellaneous__item-number" id="wind"></div>
+        </div>
+        <div class="miscellaneous__item-container">
+          <div class="miscellaneous__item-heading las la-cloud-rain"></div>
+          <div class="miscellaneous__item-number" id="precipitation"></div>
+        </div>
+        <div class="miscellaneous__item-container">
+          <div class="miscellaneous__item-heading las la-water"></div>
+          <div class="miscellaneous__item-number" id="humidity"></div>
         </div>
       </div>
     </div>

@@ -35,6 +35,7 @@ class Weather {
       wind: currentData.wind_kph,
       humidity: currentData.humidity,
       feels_like: currentData.feelslike_c,
+      precipitation: currentData.precip_mm,
     };
   }
 }
@@ -64,6 +65,9 @@ function fillWeatherUI(weather) {
   const $currentIcon = document.getElementById('current-icon');
   const $currentTemperature = document.getElementById('current-temperature');
   const $currentCondition = document.getElementById('current-condition');
+  const $wind = document.getElementById('wind');
+  const $precipitation = document.getElementById('precipitation');
+  const $humidity = document.getElementById('humidity');
 
   weather.getLocation().then((city) => {
     $searchInput.value = `${city.name}, ${city.country}`;
@@ -74,5 +78,8 @@ function fillWeatherUI(weather) {
     $currentIcon.src = current.icon;
     $currentTemperature.textContent = current.temperature;
     $currentCondition.textContent = current.condition;
+    $wind.textContent = current.wind;
+    $precipitation.textContent = current.precipitation;
+    $humidity.textContent = current.humidity;
   });
 }

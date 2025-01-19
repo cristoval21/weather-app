@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="widget-container">
+        <input
+          class="input widget__input"
+          type="text"
+          name="weather"
+          id="weather"
+          placeholder="Type a location" />
+        <div class="widget__data-container">
+          <div class="data__essentials-container">
+            <h1 class="data__temperature">27</h1>
+            <p class="data__conditions">Overcast</p>
+          </div>
+          <div class="data__details-container">
+            <div class="details__row details__icons">
+              <i class="details__icon ti ti-droplet"></i>
+              <i class="details__icon ti ti-wind"></i>
+              <i class="details__icon ti ti-cloud"></i>
+            </div>
+            <div class="details__row details__labels">
+              <p class="details__label">Humidity</p>
+              <p class="details__label">Wind Speed</p>
+              <p class="details__label">Cloud Cover</p>
+            </div>
+            <div class="details__row details__values">
+              <p class="details__value">73.7</p>
+              <p class="details__value">18.4</p>
+              <p class="details__value">50</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
